@@ -1,0 +1,70 @@
+
+:root {
+    --square-size: 30px;
+    --game-size: calc(var(--square-size) * 8);
+}
+
+body {
+    background-color: darkgray;
+}
+
+.game-container {
+    width: var(--game-size);
+    height: var(--game-size);
+    position: relative;
+    justify-content: center;
+}
+
+.game-grid {
+    width: var(--game-size);
+    height: var(--game-size);
+    margin-bottom: 10px;
+}
+
+.square {
+    position: absolute;
+    width: var(--square-size);
+    height: var(--square-size);
+}
+
+.square.wall {
+    background-color: lightcoral;
+    background-image: url("/wall.svg");
+    background-size: contain;
+}
+
+.square.player {
+    background-color: lightskyblue;
+    border-radius: 50%;
+}
+
+.square.box {
+    background-image: url("/crate.svg");
+    background-size: contain;
+}
+
+.square.target {
+    background-color: greenyellow;
+    border-radius: 10%;
+    opacity: 0.5;
+}   
+
+.level-selector {
+    display: flex;
+    justify-content: start;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.levelBtn {
+    background-color: lightblue;
+    border: 1px solid lightblue;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

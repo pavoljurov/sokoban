@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="/src/style.css" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+  </head>
+  <body>
+    <div id="header">
+      <h1 style="text-align: center; color: #f0f0f0; font-family: 'Arial', sans-serif; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); margin: 20px 0;">Sokoban</h1>
+    </div>
+
+    <div class="main-container">
+      <div class="level-selector"></div>
+      <div class="game-container">
+        <div class="game-grid">
+          Sokoban is a puzzle game where the player (warehouse keeper) must push boxes to their designated storage locations. The rules are simple:
+          <br /><br />
+          1. The player can only push boxes, not pull them
+          <br />
+          2. Boxes can only be pushed one at a time
+          <br />
+          3. Boxes cannot be pushed through walls or other boxes
+          <br />
+          4. The level is solved when all boxes are placed on their target locations
+        </div>
+        <div class="game-controls">
+          <button id="reset-level">Reset Level</button>
+          <button id="undo-move">Undo move</button>
+        </div>
+      </div>
+    </div>
+
+    <pre id="debug"></pre>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
