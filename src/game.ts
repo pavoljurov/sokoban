@@ -26,12 +26,51 @@ document.querySelector('#undo-move')?.addEventListener('click', () => {
 
 window.addEventListener('keydown', handleKeyboardEvent);
 
+// Touch event handling
+let touchStartX = 0;
+let touchStartY = 0;
+
+window.addEventListener('touchstart', (event) => {
+    touchStartX = event.touches[0].clientX;
+    touchStartY = event.touches[0].clientY;
+});
+
+window.addEventListener('touchmove', (event) => {
+    event.preventDefault(); // Prevent scrolling while swiping
+});
+
+window.addEventListener('touchend', (event) => {
+    const touchEndX = event.changedTouches[0].clientX;
+    const touchEndY = event.changedTouches[0].clientY;
+    
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+    
+    // Minimum swipe distance threshold
+    const minSwipeDistance = 30;
+    
+    if (Math.abs(deltaX) > minSwipeDistance || Math.abs(deltaY) > minSwipeDistance) {
+        if (Math.abs(deltaX) > Math.abs(deltaY)) {
+            // Horizontal swipe
+            if (deltaX > 0) {
+                move('E');
+            } else {
+                move('W');
+            }
+        } else {
+            // Vertical swipe
+            if (deltaY > 0) {
+                move('S');
+            } else {
+                move('N');
+            }
+        }
+    }
+});
+
 export function initGame(position: Position) {
     gameState.position = position;
     gameState.history = [];
-
-    // window.removeEventListener('keydown', handleKeyboardEvent);
-    
 
     render(position);
     (document.querySelector('.game-controls') as HTMLElement).style.display = 'block';
