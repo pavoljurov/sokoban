@@ -24,14 +24,17 @@ document.querySelector('#undo-move')?.addEventListener('click', () => {
     previousPosition && render(previousPosition);
 });
 
+window.addEventListener('keydown', handleKeyboardEvent);
+
 export function initGame(position: Position) {
     gameState.position = position;
     gameState.history = [];
 
-    window.removeEventListener('keydown', handleKeyboardEvent);
-    window.addEventListener('keydown', handleKeyboardEvent);
+    // window.removeEventListener('keydown', handleKeyboardEvent);
+    
 
     render(position);
+    (document.querySelector('.game-controls') as HTMLElement).style.display = 'block';
 }
 
 function handleKeyboardEvent(event: KeyboardEvent) {
